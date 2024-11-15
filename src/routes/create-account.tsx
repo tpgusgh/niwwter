@@ -8,7 +8,7 @@ const Wrapper = styled.div`
     height: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center; /* 수정: align-item -> align-items */
+    align-items: center; 
     width: 420px;
     padding: 50px 0px;
 `;
@@ -75,7 +75,7 @@ export default function CreateAccount() {
             });
             navigate("/");
         } catch (e) {
-            setError("An error occurred. Please try again."); // 에러 메시지 추가
+            setError("에러"); 
         } finally {
             setLoading(false);
         }
