@@ -4,6 +4,7 @@ import { useNavigate, Link} from "react-router-dom";
 import { auth } from '/src/firebase';
 import { FirebaseError } from "firebase/app"
 import { Error, Input, Switcher, Title, Wrapper, Form } from "../components/auth-components";
+import GithubButton from "../components/github-btn";
 
 export default function CreateAccount() {
     const navigate = useNavigate();
@@ -58,6 +59,9 @@ export default function CreateAccount() {
             <Switcher>
                 계정이 있으신가요? <Link to="/login">로그인&rarr;</Link>
             </Switcher>
+            <br></br>
+            <GithubButton />
         </Wrapper>
+        
     );
 }
