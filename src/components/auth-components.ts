@@ -48,3 +48,21 @@ export const Switcher = styled.span`
         color: #1d9bf0;
     }
 `;
+
+
+export const Sumbit = styled.input`
+
+    padding: 10px 20px;
+    border-radius: 50px;
+    border: none;
+    width: 100%;
+    font-size: 16px;
+    color: white;
+    background-color: skyblue;
+    &[type="submit"] {
+        cursor: pointer;
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+`;

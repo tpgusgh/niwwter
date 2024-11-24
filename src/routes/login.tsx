@@ -3,7 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { auth } from '/src/firebase';
 import { FirebaseError } from "firebase/app"
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { Error, Input, Switcher, Title, Wrapper, Form } from "../components/auth-components";
+import { Error, Input, Switcher, Title, Wrapper, Form, Sumbit } from "../components/auth-components";
 import GithubButton from "../components/github-btn";
 
 
@@ -47,7 +47,7 @@ export default function CreateAccount() {
             <Form onSubmit={onSubmit}>
                 <Input onChange={onChange} name="email" value={email} placeholder="Email" type="email" required />
                 <Input onChange={onChange} name="password" value={password} placeholder="Password" type="password" required />
-                <Input type="submit" value={isLoading ? "Loading..." : "Login"} />
+                <Sumbit type="submit" value={isLoading ? "Loading..." : "Login"} />
             </Form>
             {error !== "" ? <Error>{error}</Error> : null}
             <Switcher>
