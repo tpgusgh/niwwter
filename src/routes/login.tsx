@@ -30,7 +30,7 @@ export default function CreateAccount() {
         if (isLoading || email === "" || password === "") return;
         try {
             setLoading(true);
-            await signInWithEmailAndPassword(auth, eamil, password);
+            await signInWithEmailAndPassword(auth, email, password);
             navigate("/");
         } catch (e) {
             if(e instanceof FirebaseError){
