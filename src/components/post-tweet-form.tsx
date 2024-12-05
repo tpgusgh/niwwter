@@ -1,5 +1,7 @@
+import { addDoc,collection } from "firebase/firestore";
 import { useState } from "react";
 import styled from "styled-components"
+import { auth, db } from "../firebase";
 
 const Form = styled.form`
     display: flex;
@@ -73,7 +75,25 @@ export default function PostTweetForm(){
             setFile(files[0]);
         }
     }
-    return<Form>
+    const onSubmit = async(e:React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        const user = auth.currentUser
+        if(!user || isLoading || tweet === "" || tweet.length > 180) return;
+        try{
+            setLoading(true);
+            await addDoc(collection(db, "tweets"),{
+                tweet,
+                createAt: Date.now(),
+                username: user.displayName || "익명",
+                userId: user.uid
+            })
+        }catch(e){
+            console.log(e);
+        } finally{
+            setLoading(false);
+        }
+    }
+    return<Form onSubmit={onSubmit}>
         <TextArea rows={5} maxLength={180} onChange={onChange} value={tweet} placeholder="무슨 일이 생겼나요?"/>
         <AttachFileButton htmlFor="file">{file ? "사진 등록됨 ✅" : "Add photo"}</AttachFileButton>
         <AttachFileInput  onChange={onFileChange} type="file" id="file" accept="image/*" />
