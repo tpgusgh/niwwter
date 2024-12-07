@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { Wrapper } from "./auth-components";
 import styled from "styled-components";
 import { collection, orderBy } from "firebase/firestore";
 import { db } from "../firebase";
 import Tweet from "./tweet";
+import { query, getDocs } from "firebase/firestore";
+
 
 export interface ITweet{
     id:string;
@@ -16,9 +17,7 @@ export interface ITweet{
 
 }
 
-const Wrapper = styled.div`
-
-`;
+const Wrapper = styled.div``;
 
 export default function Timeline(){
     const [tweets,setTweets] = useState<ITweet[]>([]);
