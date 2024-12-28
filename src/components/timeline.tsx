@@ -8,7 +8,7 @@ import { query, getDocs } from "firebase/firestore";
 
 export interface ITweet{
     id:string;
-    // photo?:string;
+    // photo?:string; 사진이 유료임
     tweet:string;
     userId:string;
     username:string;
